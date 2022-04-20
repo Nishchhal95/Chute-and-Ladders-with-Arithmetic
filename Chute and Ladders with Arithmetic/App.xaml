@@ -1,0 +1,9 @@
+﻿<Application x:Class="Chute_and_Ladders_with_Arithmetic.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
