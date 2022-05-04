@@ -5,9 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Chute and Ladders" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+        Title="Chute And Ladders" Height="700" Width="600">
+    <Canvas x:Name="LayoutRoot" Height="700" Width="600" Background="#FFFFF000">
+        <Label Content="Chute and Ladders" HorizontalAlignment="Left" VerticalAlignment="Center" 
+               FontSize="20" Canvas.Left="202"/>
+        <Image Source="/ChuteAndLadderBoard2_Cropped.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Center" Height="550" Width="550" 
+               Canvas.Left="20" Canvas.Top="40"></Image>
 
-    </Grid>
+        <Image x:Name="PieceGreen" Source="/PieceGreen.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="16" 
+               Canvas.Left="30" Canvas.Top="550"></Image>
+
+        <Image Source="/PiecePink.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="15" 
+               Canvas.Left="50" Canvas.Top="550"></Image>
+    </Canvas>
 </Window>
