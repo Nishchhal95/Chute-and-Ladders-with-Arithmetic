@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace Chute_and_Ladders_with_Arithmetic
 {
@@ -24,6 +22,8 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private List<Block> blocks = new List<Block>();
 
+        Piece greenPiece, pinkPiece;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,43 +34,28 @@ namespace Chute_and_Ladders_with_Arithmetic
         {
             //SetupBoard();
             SetupGame();
-            MovePiece(PieceGreen, 38);
+            SetupPieces();
         }
 
-        //private void SetupBoard()
-        //{
-        //    int blockCount = 0;
-        //    for (int i = 0; i < 2; i++)
-        //    {
-        //        int direction = 1;
-        //        for (int j = 0; j < 10; j++)
-        //        {
-        //            blockCount++;
-        //            Rectangle rec = new Rectangle()
-        //            {
-        //                Width = BLOCK_X_SIZE,
-        //                Height = BLOCK_Y_SIZE,
-        //                Fill = Brushes.Green,
-        //                Stroke = Brushes.Red,
-        //                StrokeThickness = .5f,
-        //            };
-        //            LayoutRoot.Children.Add(rec);
-        //            Canvas.SetLeft(rec, BOARD_START_X + (j * BLOCK_X_SIZE));
-        //            Canvas.SetTop(rec, BOARD_START_Y - (i * BLOCK_Y_SIZE));
+        private void SetupPieces()
+        {
+            greenPiece = new Piece()
+            {
+                boardBlockNumber = 0,
+                image = PieceGreen,
+                offset = new Position2D(15, 15)
+            };
 
-        //            TextBlock textBlock = new TextBlock()
-        //            {
-        //                Text = blockCount.ToString()
-        //            };
-        //            LayoutRoot.Children.Add(textBlock);
-        //            Canvas.SetLeft(textBlock, BOARD_START_X + (j * BLOCK_X_SIZE));
-        //            Canvas.SetTop(textBlock, BOARD_START_Y - (i * BLOCK_Y_SIZE));
+            pinkPiece = new Piece()
+            {
+                boardBlockNumber = 0,
+                image = PiecePink,
+                offset = new Position2D(35, 15)
+            };
 
-        //            Block block = new Block(blockCount, BOARD_START_X + (j * BLOCK_X_SIZE), BOARD_START_Y - (i * BLOCK_Y_SIZE));
-        //        }
-        //        direction = -direction;
-        //    }
-        //}
+            MovePieceToTargetBlockBlockByBlock(greenPiece, 4);
+            //MovePieceToTargetBlockBlockByBlock(pinkPiece, 12);
+        }
 
         private void SetupGame()
         {
@@ -100,7 +85,7 @@ namespace Chute_and_Ladders_with_Arithmetic
                     //LayoutRoot.Children.Add(rec);
                     //LayoutRoot.Children.Add(textBlock);
 
-                    double xPos = direction > 0 ? BOARD_START_X + (j * BLOCK_X_SIZE) : 
+                    double xPos = direction > 0 ? BOARD_START_X + (j * BLOCK_X_SIZE) :
                         (BOARD_START_X + MAX_X * BLOCK_X_SIZE) - ((j + 1) * BLOCK_X_SIZE);
                     double yPos = BOARD_START_Y - (i * BLOCK_Y_SIZE);
 
@@ -111,6 +96,12 @@ namespace Chute_and_Ladders_with_Arithmetic
                     //Canvas.SetTop(textBlock, yPos);
 
                     Block block = new Block(blockNumber, new Position2D(xPos, yPos));
+                    if(blockNumber == 4)
+                    {
+                        block.isSpecial = true;
+                        block.connectedBlockNumber = 14;
+                        block.specialBlockType = SpecialBlockType.Ladder;
+                    }
                     blocks.Add(block);
 
                     //lastBlockPosX = Canvas.GetLeft(rec);
@@ -121,18 +112,60 @@ namespace Chute_and_Ladders_with_Arithmetic
             }
         }
 
-        private void MovePiece(Image piece, double xPos, double yPos)
+        private async void MovePieceToTargetBlockBlockByBlock(Piece piece, int blockNumber)
         {
-            Canvas.SetLeft(piece, xPos);
-            Canvas.SetTop(piece, yPos);
+            while (piece.boardBlockNumber < blockNumber)
+            {
+                MovePieceToTargetBlock(piece, piece.boardBlockNumber + 1);
+                await Task.Delay(300);
+            }
+
+            FinishMove(piece, blockNumber);
         }
 
-        private void MovePiece(Image piece, int blockNumber)
+        private void MovePieceToTargetBlock(Piece piece, int boardBlockNumber)
+        {
+            Block block = blocks.Find(x => x.blockIndex == boardBlockNumber);
+            Position2D position = block.GetBlockPosition();
+
+            Storyboard sbAnimateImage = new Storyboard();
+            DoubleAnimation doubleAnimation;
+
+            doubleAnimation = new DoubleAnimation(position.Y + piece.offset.Y, new Duration(TimeSpan.FromMilliseconds(200)));
+
+            Storyboard.SetTarget(doubleAnimation, piece.image);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(Canvas.Top)"));
+            sbAnimateImage.Children.Add(doubleAnimation);
+
+            doubleAnimation = new DoubleAnimation(position.X + piece.offset.X, new Duration(TimeSpan.FromMilliseconds(200)));
+            Storyboard.SetTarget(doubleAnimation, piece.image);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(Canvas.Left)"));
+            sbAnimateImage.Children.Add(doubleAnimation);
+
+            sbAnimateImage.Completed += (s, e) =>
+            {
+                piece.boardBlockNumber = boardBlockNumber;
+            };
+            sbAnimateImage.Begin();
+        }
+
+        private void FinishMove(Piece piece, int blockNumber)
         {
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
-            Position2D position = block.GetBlockPosition();
-            Canvas.SetLeft(piece, position.X);
-            Canvas.SetTop(piece, position.Y);
+            if (block.isSpecial)
+            {
+                switch (block.specialBlockType)
+                {
+                    case SpecialBlockType.Chute:
+                        break;
+                    case SpecialBlockType.Ladder:
+                        break;
+                    default:
+                        break;
+                }
+
+                MovePieceToTargetBlock(piece, block.connectedBlockNumber);
+            }
         }
     }
 }

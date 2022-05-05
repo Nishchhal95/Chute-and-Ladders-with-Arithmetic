@@ -17,7 +17,7 @@
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="16" 
                Canvas.Left="30" Canvas.Top="550"></Image>
 
-        <Image Source="/PiecePink.jpg" Stretch="Fill" StretchDirection="Both"
+        <Image x:Name="PiecePink" Source="/PiecePink.jpg" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="15" 
                Canvas.Left="50" Canvas.Top="550"></Image>
     </Canvas>
