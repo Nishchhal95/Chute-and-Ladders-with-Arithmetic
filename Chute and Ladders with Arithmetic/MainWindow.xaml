@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="Chute And Ladders" Height="700" Width="600">
-    <Canvas x:Name="LayoutRoot" Height="700" Width="600" Background="#FFFFF000">
+        Title="Chute And Ladders" Height="700" Width="600" ResizeMode="NoResize">
+    <Canvas x:Name="LayoutRoot" Height="700" Width="600" Background="DarkTurquoise">
         <Label Content="Chute and Ladders" HorizontalAlignment="Left" VerticalAlignment="Center" 
                FontSize="20" Canvas.Left="202"/>
         <Image Source="/ChuteAndLadderBoard2_Cropped.jpg" Stretch="Fill" StretchDirection="Both"
@@ -20,5 +20,18 @@
         <Image x:Name="PiecePink" Source="/PiecePink.jpg" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="15" 
                Canvas.Left="50" Canvas.Top="550"></Image>
+
+        <Image x:Name="Dice" Source="/Dice_1.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="50" 
+               Canvas.Left="50" Canvas.Top="600"></Image>
+
+        <Image x:Name="UIGreenPiece" Source="/PieceGreen.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="16" 
+               Canvas.Left="121" Canvas.Top="630"></Image>
+
+        <Image x:Name="UIPinkPiece" Source="/PiecePink.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="15" 
+               Canvas.Left="122" Canvas.Top="600"></Image>
+        <Button Content="Move Random" Canvas.Left="488" Canvas.Top="625" Click="Button_Click"/>
     </Canvas>
 </Window>

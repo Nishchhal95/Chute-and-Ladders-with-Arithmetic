@@ -9,19 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ChuteAndLadderBoard.jpg" />
     <None Remove="ChuteAndLadderBoard2.jpg" />
     <None Remove="ChuteAndLadderBoard2_Cropped.jpg" />
     <None Remove="ChuteAndLadderBoard_1.jpg" />
     <None Remove="ChuteAndLadderBoard_3.jpg" />
+    <None Remove="Chutes-and-Ladders-1.jpg" />
+    <None Remove="Dice_1.jpg" />
     <None Remove="PieceGreen.jpg" />
     <None Remove="PiecePink.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ChuteAndLadderBoard.jpg" />
     <Resource Include="ChuteAndLadderBoard2.jpg" />
     <Resource Include="ChuteAndLadderBoard2_Cropped.jpg" />
     <Resource Include="ChuteAndLadderBoard_1.jpg" />
     <Resource Include="ChuteAndLadderBoard_3.jpg" />
+    <Resource Include="Chutes-and-Ladders-1.jpg" />
+    <Resource Include="Dice_1.jpg" />
     <Resource Include="PieceGreen.jpg" />
     <Resource Include="PiecePink.jpg" />
   </ItemGroup>

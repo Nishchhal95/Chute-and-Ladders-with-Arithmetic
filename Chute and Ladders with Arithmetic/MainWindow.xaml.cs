@@ -53,7 +53,7 @@ namespace Chute_and_Ladders_with_Arithmetic
                 offset = new Position2D(35, 15)
             };
 
-            MovePieceToTargetBlockBlockByBlock(greenPiece, 4);
+            //MovePieceToTargetBlockBlockByBlock(greenPiece, 4);
             //MovePieceToTargetBlockBlockByBlock(pinkPiece, 12);
         }
 
@@ -147,6 +147,13 @@ namespace Chute_and_Ladders_with_Arithmetic
                 piece.boardBlockNumber = boardBlockNumber;
             };
             sbAnimateImage.Begin();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            int rndPos = rnd.Next(1, 10);
+            MovePieceToTargetBlockBlockByBlock(greenPiece, rndPos);
         }
 
         private void FinishMove(Piece piece, int blockNumber)
