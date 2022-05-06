@@ -33,5 +33,6 @@
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="15" 
                Canvas.Left="122" Canvas.Top="600"></Image>
         <Button Content="Move Random" Canvas.Left="488" Canvas.Top="625" Click="Button_Click"/>
+        <TextBox x:Name="InputBox" Canvas.Left="469" TextWrapping="Wrap" Text="TextBox" Canvas.Top="602" Width="120"/>
     </Canvas>
 </Window>

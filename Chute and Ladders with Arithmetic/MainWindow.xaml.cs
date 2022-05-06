@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace Chute_and_Ladders_with_Arithmetic
 {
@@ -11,18 +14,9 @@ namespace Chute_and_Ladders_with_Arithmetic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double BLOCK_X_SIZE = 55;
-        private const double BLOCK_Y_SIZE = 55;
-
-        private const double BOARD_START_X = 20;
-        private const double BOARD_START_Y = 535;
-
-        private const int MAX_X = 10;
-        private const int MAX_Y = 10;
-
         private List<Block> blocks = new List<Block>();
 
-        Piece greenPiece, pinkPiece;
+        private Piece greenPiece, pinkPiece = null;
 
         public MainWindow()
         {
@@ -32,40 +26,17 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private void InitGame()
         {
-            //SetupBoard();
             SetupGame();
             SetupPieces();
-        }
-
-        private void SetupPieces()
-        {
-            greenPiece = new Piece()
-            {
-                boardBlockNumber = 0,
-                image = PieceGreen,
-                offset = new Position2D(15, 15)
-            };
-
-            pinkPiece = new Piece()
-            {
-                boardBlockNumber = 0,
-                image = PiecePink,
-                offset = new Position2D(35, 15)
-            };
-
-            //MovePieceToTargetBlockBlockByBlock(greenPiece, 4);
-            //MovePieceToTargetBlockBlockByBlock(pinkPiece, 12);
         }
 
         private void SetupGame()
         {
             int blockNumber = 0;
-            double lastBlockPosX = 0;
-            double lastBlockPosY = 0;
             int direction = 1;
             for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < MAX_Y; j++)
+                for (int j = 0; j < GameConfig.MAX_Y; j++)
                 {
                     blockNumber++;
 
@@ -85,9 +56,9 @@ namespace Chute_and_Ladders_with_Arithmetic
                     //LayoutRoot.Children.Add(rec);
                     //LayoutRoot.Children.Add(textBlock);
 
-                    double xPos = direction > 0 ? BOARD_START_X + (j * BLOCK_X_SIZE) :
-                        (BOARD_START_X + MAX_X * BLOCK_X_SIZE) - ((j + 1) * BLOCK_X_SIZE);
-                    double yPos = BOARD_START_Y - (i * BLOCK_Y_SIZE);
+                    double xPos = direction > 0 ? GameConfig.BOARD_START_X + (j * GameConfig.BLOCK_X_SIZE) :
+                        (GameConfig.BOARD_START_X + GameConfig.MAX_X * GameConfig.BLOCK_X_SIZE) - ((j + 1) * GameConfig.BLOCK_X_SIZE);
+                    double yPos = GameConfig.BOARD_START_Y - (i * GameConfig.BLOCK_Y_SIZE);
 
                     //Canvas.SetLeft(rec, xPos);
                     //Canvas.SetTop(rec, yPos);
@@ -96,11 +67,34 @@ namespace Chute_and_Ladders_with_Arithmetic
                     //Canvas.SetTop(textBlock, yPos);
 
                     Block block = new Block(blockNumber, new Position2D(xPos, yPos));
-                    if(blockNumber == 4)
+                    if (GameConfig.gameBoardSpecialBlocksConfig.ContainsKey(blockNumber))
                     {
+                        SpecialBlockGameConfig specialBlockGameConfig = GameConfig.gameBoardSpecialBlocksConfig[blockNumber];
                         block.isSpecial = true;
-                        block.connectedBlockNumber = 14;
-                        block.specialBlockType = SpecialBlockType.Ladder;
+                        block.connectedBlockNumber = specialBlockGameConfig.connectedBlockNumber;
+                        block.specialBlockType = specialBlockGameConfig.specialBlockType;
+
+                        //Create Rectangle
+                        //Rectangle rec = new Rectangle()
+                        //{
+                        //    Width = GameConfig.BLOCK_X_SIZE,
+                        //    Height = GameConfig.BLOCK_Y_SIZE,
+                        //    Fill = Brushes.Purple,
+                        //    Stroke = Brushes.Black,
+                        //    StrokeThickness = .5f,
+                        //};
+                        //TextBlock textBlock = new TextBlock()
+                        //{
+                        //    Text = blockNumber.ToString()
+                        //};
+                        //LayoutRoot.Children.Add(rec);
+                        //LayoutRoot.Children.Add(textBlock);
+
+                        //Canvas.SetLeft(rec, xPos);
+                        //Canvas.SetTop(rec, yPos);
+
+                        //Canvas.SetLeft(textBlock, xPos);
+                        //Canvas.SetTop(textBlock, yPos);
                     }
                     blocks.Add(block);
 
@@ -110,6 +104,23 @@ namespace Chute_and_Ladders_with_Arithmetic
 
                 direction = -direction;
             }
+        }
+
+        private void SetupPieces()
+        {
+            greenPiece = new Piece()
+            {
+                boardBlockNumber = 0,
+                image = PieceGreen,
+                offset = new Position2D(15, 15)
+            };
+
+            pinkPiece = new Piece()
+            {
+                boardBlockNumber = 0,
+                image = PiecePink,
+                offset = new Position2D(35, 15)
+            };
         }
 
         private async void MovePieceToTargetBlockBlockByBlock(Piece piece, int blockNumber)
@@ -149,13 +160,6 @@ namespace Chute_and_Ladders_with_Arithmetic
             sbAnimateImage.Begin();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Random rnd = new Random();
-            int rndPos = rnd.Next(1, 10);
-            MovePieceToTargetBlockBlockByBlock(greenPiece, rndPos);
-        }
-
         private void FinishMove(Piece piece, int blockNumber)
         {
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
@@ -173,6 +177,22 @@ namespace Chute_and_Ladders_with_Arithmetic
 
                 MovePieceToTargetBlock(piece, block.connectedBlockNumber);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string inputString = InputBox.Text;
+            if (string.IsNullOrEmpty(inputString))
+            {
+                return;
+            }
+
+            if(!int.TryParse(inputString, out int targetBlockNumber))
+            {
+                return;
+            }
+
+            MovePieceToTargetBlockBlockByBlock(greenPiece, Math.Clamp(targetBlockNumber, 0, 100));
         }
     }
 }
