@@ -9,27 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ChuteAndLadderBoard.jpg" />
-    <None Remove="ChuteAndLadderBoard2.jpg" />
-    <None Remove="ChuteAndLadderBoard2_Cropped.jpg" />
-    <None Remove="ChuteAndLadderBoard_1.jpg" />
-    <None Remove="ChuteAndLadderBoard_3.jpg" />
-    <None Remove="Chutes-and-Ladders-1.jpg" />
-    <None Remove="Dice_1.jpg" />
-    <None Remove="PieceGreen.jpg" />
-    <None Remove="PiecePink.jpg" />
+    <None Remove="Resources\ChuteAndLadderBoard.jpg" />
+    <None Remove="Resources\ChutesAndLadderMenuImage.jpg" />
+    <None Remove="Resources\Dice_1.png" />
+    <None Remove="Resources\Dice_2.png" />
+    <None Remove="Resources\Dice_3.png" />
+    <None Remove="Resources\Dice_4.png" />
+    <None Remove="Resources\Dice_5.png" />
+    <None Remove="Resources\Dice_6.png" />
+    <None Remove="Resources\PieceGreen_NoBG.png" />
+    <None Remove="Resources\PiecePink_NoBG.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="ChuteAndLadderBoard.jpg" />
-    <Resource Include="ChuteAndLadderBoard2.jpg" />
-    <Resource Include="ChuteAndLadderBoard2_Cropped.jpg" />
-    <Resource Include="ChuteAndLadderBoard_1.jpg" />
-    <Resource Include="ChuteAndLadderBoard_3.jpg" />
-    <Resource Include="Chutes-and-Ladders-1.jpg" />
-    <Resource Include="Dice_1.jpg" />
-    <Resource Include="PieceGreen.jpg" />
-    <Resource Include="PiecePink.jpg" />
+    <Resource Include="Resources\ChuteAndLadderBoard.jpg" />
+    <Resource Include="Resources\ChutesAndLadderMenuImage.jpg" />
+    <Resource Include="Resources\Dice_1.png" />
+    <Resource Include="Resources\Dice_2.png" />
+    <Resource Include="Resources\Dice_3.png" />
+    <Resource Include="Resources\Dice_4.png" />
+    <Resource Include="Resources\Dice_5.png" />
+    <Resource Include="Resources\Dice_6.png" />
+    <Resource Include="Resources\PieceGreen_NoBG.png" />
+    <Resource Include="Resources\PiecePink_NoBG.png" />
   </ItemGroup>
 
 </Project>

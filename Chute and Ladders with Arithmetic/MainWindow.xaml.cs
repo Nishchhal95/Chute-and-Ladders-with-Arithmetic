@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Chute_and_Ladders_with_Arithmetic
@@ -193,6 +196,32 @@ namespace Chute_and_Ladders_with_Arithmetic
             }
 
             MovePieceToTargetBlockBlockByBlock(greenPiece, Math.Clamp(targetBlockNumber, 0, 100));
+        }
+
+        private async Task RollDiceAsync()
+        {
+            double diceRollTime = 500f;
+            while (diceRollTime > 0)
+            {
+                UpdateRandomDiceImage();
+                await Task.Delay(50);
+                diceRollTime -= 50;
+            }
+        }
+
+        private void DiceRoll_Click(object sender, RoutedEventArgs e)
+        {
+            RollDiceAsync();
+        }
+
+        private void UpdateRandomDiceImage()
+        {
+            Random random = new Random();
+            int randomDiceImageNumber = random.Next(1, 7);
+            Debug.WriteLine("Dice Rolled " + randomDiceImageNumber);
+            Dice.Source = new BitmapImage(new Uri("pack://application:,,,/" +
+                "Chute and Ladders with Arithmetic;component/Resources/Dice_" + 
+                randomDiceImageNumber + ".png"));
         }
     }
 }
