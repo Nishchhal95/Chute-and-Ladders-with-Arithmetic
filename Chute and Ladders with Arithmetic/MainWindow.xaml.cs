@@ -115,19 +115,18 @@ namespace Chute_and_Ladders_with_Arithmetic
             {
                 boardBlockNumber = 0,
                 image = PieceGreen,
-                offset = new Position2D(15, 15)
-            };
-
-            pinkPiece = new Piece()
-            {
-                boardBlockNumber = 0,
-                image = PiecePink,
-                offset = new Position2D(35, 15)
+                offset = new Position2D(25, 15)
             };
         }
 
         private async void MovePieceToTargetBlockBlockByBlock(Piece piece, int blockNumber)
         {
+            if (blockNumber < 0 || blockNumber > 100)
+            {
+                Debug.WriteLine("Cannot Move!");
+                return;
+            }
+
             while (piece.boardBlockNumber < blockNumber)
             {
                 MovePieceToTargetBlock(piece, piece.boardBlockNumber + 1);
@@ -166,11 +165,19 @@ namespace Chute_and_Ladders_with_Arithmetic
         private void FinishMove(Piece piece, int blockNumber)
         {
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
+
+            if(block.blockIndex == 100)
+            {
+                Debug.WriteLine("You won!");
+                return;
+            }
+
             if (block.isSpecial)
             {
                 switch (block.specialBlockType)
                 {
                     case SpecialBlockType.Chute:
+                        Debug.WriteLine("Ask a Question");
                         break;
                     case SpecialBlockType.Ladder:
                         break;
@@ -182,31 +189,21 @@ namespace Chute_and_Ladders_with_Arithmetic
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string inputString = InputBox.Text;
-            if (string.IsNullOrEmpty(inputString))
-            {
-                return;
-            }
-
-            if(!int.TryParse(inputString, out int targetBlockNumber))
-            {
-                return;
-            }
-
-            MovePieceToTargetBlockBlockByBlock(greenPiece, Math.Clamp(targetBlockNumber, 0, 100));
-        }
-
         private async Task RollDiceAsync()
         {
             double diceRollTime = 500f;
-            while (diceRollTime > 0)
+            while (diceRollTime > 50)
             {
-                UpdateRandomDiceImage();
+                UpdateDiceImage(GetRandomDiceNumber());
                 await Task.Delay(50);
                 diceRollTime -= 50;
             }
+
+            await Task.Delay(50);
+            int randomDiceNumber = GetRandomDiceNumber();
+            UpdateDiceImage(randomDiceNumber);
+            Debug.WriteLine("Dice Final Roll : " + randomDiceNumber);
+            MovePieceToTargetBlockBlockByBlock(greenPiece, greenPiece.boardBlockNumber + randomDiceNumber);
         }
 
         private void DiceRoll_Click(object sender, RoutedEventArgs e)
@@ -214,14 +211,18 @@ namespace Chute_and_Ladders_with_Arithmetic
             RollDiceAsync();
         }
 
-        private void UpdateRandomDiceImage()
+        private void UpdateDiceImage(int randomDiceImageNumber)
         {
-            Random random = new Random();
-            int randomDiceImageNumber = random.Next(1, 7);
-            Debug.WriteLine("Dice Rolled " + randomDiceImageNumber);
             Dice.Source = new BitmapImage(new Uri("pack://application:,,,/" +
                 "Chute and Ladders with Arithmetic;component/Resources/Dice_" + 
                 randomDiceImageNumber + ".png"));
+        }
+
+        private int GetRandomDiceNumber()
+        {
+            Random random = new Random();
+            int randomDiceNumber = random.Next(1, 7);
+            return randomDiceNumber;
         }
     }
 }

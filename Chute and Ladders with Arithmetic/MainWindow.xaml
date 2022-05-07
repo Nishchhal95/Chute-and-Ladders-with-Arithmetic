@@ -15,33 +15,32 @@
 
         <Image x:Name="PieceGreen" Source="Resources/PieceGreen_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="16" 
-               Canvas.Left="30" Canvas.Top="550"></Image>
+               Canvas.Left="40" Canvas.Top="550"></Image>
 
-        <Image x:Name="PiecePink" Source="Resources/PiecePink_NoBG.png" Stretch="Fill" StretchDirection="Both"
+        <!--<Image x:Name="PiecePink" Source="Resources/PiecePink_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="15" 
-               Canvas.Left="50" Canvas.Top="550"></Image>
+               Canvas.Left="50" Canvas.Top="550"></Image>-->
 
         <Rectangle Width="50" Height="49" Fill="White" Canvas.Top="601" 
-                   Canvas.Left="50" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   Canvas.Left="275" HorizontalAlignment="Left" VerticalAlignment="Center" 
                    RadiusX="8" RadiusY="8"></Rectangle>
 
         <Image x:Name="Dice" Source="Resources/Dice_1.png" Stretch="Fill" StretchDirection="Both"
-               HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="50" 
-               Canvas.Left="50" Canvas.Top="600">
+               HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" 
+               Canvas.Left="275" Canvas.Top="600">
         </Image>
 
         <Button x:Name="DiceRoll" Content="Roll" Canvas.Top="655" Width="50" 
-                HorizontalAlignment="Left" VerticalAlignment="Top" Click="DiceRoll_Click" Canvas.Left="50"/>
+                HorizontalAlignment="Center" VerticalAlignment="Top" Click="DiceRoll_Click" Canvas.Left="275"/>
 
-        <Image x:Name="UIGreenPiece" Source="Resources/PieceGreen_NoBG.png" Stretch="Fill" StretchDirection="Both"
+        <!--<Image x:Name="UIGreenPiece" Source="Resources/PieceGreen_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="16" 
                Canvas.Left="121" Canvas.Top="630">
         </Image>
 
         <Image x:Name="UIPinkPiece" Source="Resources/PiecePink_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="15" 
-               Canvas.Left="122" Canvas.Top="600"></Image>
-        <Button Content="Move Random" Canvas.Left="488" Canvas.Top="625" Click="Button_Click"/>
-        <TextBox x:Name="InputBox" Canvas.Left="469" TextWrapping="Wrap" Text="TextBox" Canvas.Top="602" Width="120"/>
+               Canvas.Left="122" Canvas.Top="600"></Image>-->
+
     </Canvas>
 </Window>
