@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chute_and_Ladders_with_Arithmetic.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,17 @@ namespace Chute_and_Ladders_with_Arithmetic
                 { 95, new SpecialBlockGameConfig(75, SpecialBlockType.Chute) },
                 { 98, new SpecialBlockGameConfig(78, SpecialBlockType.Chute) },
             };
+
+        public static List<Question> questions = new List<Question>()
+        {
+            {new Question("What is 5 x 10?",  new List<string>{"10", "20", "40", "50"}, 3) },
+            {new Question("What is 19 + 10?",  new List<string>{"27", "29", "28", "26"}, 1) },
+            {new Question("What is 10 / 2?",  new List<string>{"5", "4", "20", "2"}, 0) },
+            {new Question("What is 47 - 10?",  new List<string>{"16", "57", "37", "36"}, 2) },
+            {new Question("a x 5 = 25, What is a?",  new List<string>{"20", "4", "5", "1"}, 2) },
+            {new Question("What is 22 x 10?",  new List<string>{"220", "2200", "219", "50"}, 0) },
+            {new Question("b x 8 = 32?",  new List<string>{"3", "4", "5", "6"}, 1) },
+        };
     }
 
     public class SpecialBlockGameConfig

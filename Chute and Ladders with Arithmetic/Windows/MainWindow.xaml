@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="Chute And Ladders" Height="720" Width="600" ResizeMode="NoResize">
+        Title="Chute And Ladders" Height="720" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Canvas x:Name="LayoutRoot" Height="720" Width="600" Background="DarkTurquoise">
         <Label Content="Chute and Ladders" HorizontalAlignment="Left" VerticalAlignment="Center" 
                FontSize="20" Canvas.Left="202"/>

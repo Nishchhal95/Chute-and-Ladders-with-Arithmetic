@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chute_and_Ladders_with_Arithmetic.Windows;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -178,14 +179,20 @@ namespace Chute_and_Ladders_with_Arithmetic
                 {
                     case SpecialBlockType.Chute:
                         Debug.WriteLine("Ask a Question");
+                        Random random = new Random();
+                        int randomQuestionIndex = random.Next(0, GameConfig.questions.Count);
+                        QuestionWindow questionWindow = new QuestionWindow(GameConfig.questions[randomQuestionIndex], null, () =>
+                        {
+                            MovePieceToTargetBlock(piece, block.connectedBlockNumber);
+                        });
+                        questionWindow.Show();
                         break;
                     case SpecialBlockType.Ladder:
+                        MovePieceToTargetBlock(piece, block.connectedBlockNumber);
                         break;
                     default:
                         break;
                 }
-
-                MovePieceToTargetBlock(piece, block.connectedBlockNumber);
             }
         }
 
