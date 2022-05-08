@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Chute And Ladders" Height="700" Width="600" ResizeMode="NoResize">
     <StackPanel Background="DarkTurquoise">
-        <Image Source="Resources/ChutesAndLadderMenuImage.jpg" Margin="10 20 10 0"></Image>
+        <Image Source="../Resources/ChutesAndLadderMenuImage.jpg" Margin="10 20 10 0"></Image>
         <Label Content="Learn arithemetic with me" HorizontalAlignment="Center" FontSize="30"/>
         <Button Content="Play" HorizontalAlignment="Center" FontSize="40" Width="100" Margin="0 100 0 0" Click="PlayButton_Click"/>
 
