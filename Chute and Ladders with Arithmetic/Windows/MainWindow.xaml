@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Chute And Ladders" Height="720" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Canvas x:Name="LayoutRoot" Height="720" Width="600" Background="DarkTurquoise">
-        <Label Content="Chute and Ladders" HorizontalAlignment="Left" VerticalAlignment="Center" 
-               FontSize="20" Canvas.Left="202"/>
+        <Label Content="Chute and Ladders" HorizontalAlignment="Center" VerticalAlignment="Top" 
+               FontSize="30" Canvas.Left="171" Canvas.Top="-5"/>
         <Image Source="../Resources/ChuteAndLadderBoard.jpg" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="550" Width="550" 
                Canvas.Left="20" Canvas.Top="40"></Image>
@@ -41,6 +41,9 @@
         <Image x:Name="UIPinkPiece" Source="Resources/PiecePink_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="15" 
                Canvas.Left="122" Canvas.Top="600"></Image>-->
+
+        <TextBlock x:Name="ScoreTextBlock" Text="Score: 0" FontSize="22" Canvas.Left="20" Canvas.Top="610"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
 
     </Canvas>
 </Window>

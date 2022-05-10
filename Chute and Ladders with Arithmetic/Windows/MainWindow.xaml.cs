@@ -1,4 +1,5 @@
-﻿using Chute_and_Ladders_with_Arithmetic.Windows;
+﻿using Chute_and_Ladders_with_Arithmetic.Classes;
+using Chute_and_Ladders_with_Arithmetic.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,6 +22,22 @@ namespace Chute_and_Ladders_with_Arithmetic
         private List<Block> blocks = new List<Block>();
 
         private Piece greenPiece, pinkPiece = null;
+
+        public int Score
+        {
+            get
+            {
+                return _score;
+            }
+
+            set
+            {
+                _score = value;
+                UpdateScoreOnUI();
+            }
+        }
+
+        private int _score;
 
         public MainWindow()
         {
@@ -165,11 +182,18 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private void FinishMove(Piece piece, int blockNumber)
         {
+            Score = Score + GameConfig.MOVE_SCORE;
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
 
             if(block.blockIndex == 100)
             {
-                Debug.WriteLine("You won!");
+                string winMessageString = $"You Won! \nAnd your total Score is {Score}.";
+                if(Score > DataStorage.GetSavedHighScore())
+                {
+                    winMessageString += $"\nYou made a new HighScore!!";
+                    DataStorage.SaveHighScore(Score);
+                }
+                ShowMessage(winMessageString);
                 return;
             }
 
@@ -181,14 +205,18 @@ namespace Chute_and_Ladders_with_Arithmetic
                         Debug.WriteLine("Ask a Question");
                         Random random = new Random();
                         int randomQuestionIndex = random.Next(0, GameConfig.questions.Count);
-                        QuestionWindow questionWindow = new QuestionWindow(GameConfig.questions[randomQuestionIndex], null, () =>
+                        QuestionWindow questionWindow = new QuestionWindow(GameConfig.questions[randomQuestionIndex],
+                        null, () =>
                         {
+                            Score = Score + GameConfig.CHUTE_SCORE;
                             MovePieceToTargetBlock(piece, block.connectedBlockNumber);
                         });
                         questionWindow.Show();
                         break;
                     case SpecialBlockType.Ladder:
+                        Score = Score + GameConfig.LADDER_SCORE;
                         MovePieceToTargetBlock(piece, block.connectedBlockNumber);
+                        FinishMove(piece, block.connectedBlockNumber);
                         break;
                     default:
                         break;
@@ -230,6 +258,27 @@ namespace Chute_and_Ladders_with_Arithmetic
             Random random = new Random();
             int randomDiceNumber = random.Next(1, 7);
             return randomDiceNumber;
+        }
+
+        private void UpdateScoreOnUI()
+        {
+            ScoreTextBlock.Text = $"Score: " + _score;
+        }
+
+        private void ShowMessage(string message)
+        {
+            string messageBoxText = message;
+            string caption = "Winner!";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Information;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.OK);
+
+            if (result == MessageBoxResult.OK)
+            {
+                Close();
+            }
         }
     }
 }

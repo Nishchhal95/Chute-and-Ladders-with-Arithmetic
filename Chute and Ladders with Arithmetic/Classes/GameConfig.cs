@@ -18,6 +18,11 @@ namespace Chute_and_Ladders_with_Arithmetic
         public const int MAX_X = 10;
         public const int MAX_Y = 10;
 
+        public const int MOVE_SCORE = 2;
+        public const int LADDER_SCORE = 5;
+        public const int CHUTE_SCORE = -5;
+        public const int SPECIAL_BLOCK = 10;
+
         public static Dictionary<int, SpecialBlockGameConfig> gameBoardSpecialBlocksConfig =
             new Dictionary<int, SpecialBlockGameConfig>()
             {

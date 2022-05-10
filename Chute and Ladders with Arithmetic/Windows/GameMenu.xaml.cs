@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chute_and_Ladders_with_Arithmetic.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,20 @@ namespace Chute_and_Ladders_with_Arithmetic
         public GameMenu()
         {
             InitializeComponent();
+            InitWindow();
+        }
+
+        private void InitWindow()
+        {
+            if(DataStorage.GetSavedHighScore() > 0)
+            {
+                HighScoreText.Text = $"HighScore: {DataStorage.GetSavedHighScore()}";
+                HighScoreText.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                HighScoreText.Visibility = Visibility.Hidden;
+            }
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
