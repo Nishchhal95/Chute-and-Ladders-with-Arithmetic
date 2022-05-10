@@ -15,23 +15,27 @@
 
         <Image x:Name="PieceGreen" Source="../Resources/PieceGreen_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="16" 
-               Canvas.Left="40" Canvas.Top="550"></Image>
+               Canvas.Left="40" Canvas.Top="550" >
+            <Image.Effect>
+                <DropShadowEffect BlurRadius="5" Direction="225"/>
+            </Image.Effect>
+        </Image>
 
         <!--<Image x:Name="PiecePink" Source="Resources/PiecePink_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="15" 
                Canvas.Left="50" Canvas.Top="550"></Image>-->
 
-        <Rectangle Width="50" Height="49" Fill="White" Canvas.Top="601" 
-                   Canvas.Left="275" HorizontalAlignment="Left" VerticalAlignment="Center" 
+        <Rectangle Width="50" Height="49" Fill="White" Canvas.Top="602" 
+                   Canvas.Left="132" HorizontalAlignment="Left" VerticalAlignment="Top" 
                    RadiusX="8" RadiusY="8"></Rectangle>
 
         <Image x:Name="Dice" Source="../Resources/Dice_1.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" 
-               Canvas.Left="275" Canvas.Top="600">
+               Canvas.Left="132" Canvas.Top="601">
         </Image>
 
-        <Button x:Name="DiceRoll" Content="Roll" Canvas.Top="655" Width="50" 
-                HorizontalAlignment="Center" VerticalAlignment="Top" Click="DiceRoll_Click" Canvas.Left="275"/>
+        <Button x:Name="DiceRoll" Content="Roll" Canvas.Top="656" Width="50" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Click="DiceRoll_Click" Canvas.Left="132"/>
 
         <!--<Image x:Name="UIGreenPiece" Source="Resources/PieceGreen_NoBG.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="16" 
@@ -44,6 +48,38 @@
 
         <TextBlock x:Name="ScoreTextBlock" Text="Score: 0" FontSize="22" Canvas.Left="20" Canvas.Top="610"
                    HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+
+        <TextBlock Text="+5 Every Move" FontSize="15" Canvas.Left="242" Canvas.Top="615"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Width="101"></TextBlock>
+
+        <Image Source="../Resources/ladderIcon.jpg" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="50" 
+               Canvas.Left="348" Canvas.Top="600">
+        </Image>
+
+        <TextBlock Text="+10" FontSize="15" Canvas.Left="360" Canvas.Top="650"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+        <Image Source="../Resources/chuteIcon.png" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="50" 
+               Canvas.Left="436" Canvas.Top="600">
+        </Image>
+
+        <TextBlock Text="-10" FontSize="15" Canvas.Left="450" Canvas.Top="646"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+
+        <Image Source="../Resources/starIcon.png" Stretch="Fill" StretchDirection="Both"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" 
+               Canvas.Left="520" Canvas.Top="600">
+        </Image>
+
+        <TextBlock Text="+20" FontSize="15" Canvas.Left="532" Canvas.Top="646"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+        <TextBlock x:Name="PlusEffect" Text="+10" FontSize="15" Canvas.Left="75" Canvas.Top="640"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"></TextBlock>
+
 
     </Canvas>
 </Window>

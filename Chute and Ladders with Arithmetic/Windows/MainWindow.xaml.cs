@@ -95,6 +95,26 @@ namespace Chute_and_Ladders_with_Arithmetic
                         block.connectedBlockNumber = specialBlockGameConfig.connectedBlockNumber;
                         block.specialBlockType = specialBlockGameConfig.specialBlockType;
 
+                        if(block.specialBlockType == SpecialBlockType.Special)
+                        {
+                            Image dynamicImage = new Image();
+                            dynamicImage.Width = 20;
+                            dynamicImage.Height = 20;
+
+                            BitmapImage bitmap = new BitmapImage();
+                            bitmap.BeginInit();
+                            bitmap.UriSource = new Uri("pack://application:,,,/Resources/starIcon.png");
+                            bitmap.EndInit();
+
+                            // Set Image.Source  
+                            dynamicImage.Source = bitmap;
+
+                            // Add Image to Window  
+                            LayoutRoot.Children.Add(dynamicImage);
+
+                            Canvas.SetLeft(dynamicImage, xPos + 35);
+                            Canvas.SetTop(dynamicImage, yPos);
+                        }
                         //Create Rectangle
                         //Rectangle rec = new Rectangle()
                         //{
@@ -183,6 +203,7 @@ namespace Chute_and_Ladders_with_Arithmetic
         private void FinishMove(Piece piece, int blockNumber)
         {
             Score = Score + GameConfig.MOVE_SCORE;
+            ShowPlusEffect(GameConfig.MOVE_SCORE);
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
 
             if(block.blockIndex == 100)
@@ -209,14 +230,27 @@ namespace Chute_and_Ladders_with_Arithmetic
                         null, () =>
                         {
                             Score = Score + GameConfig.CHUTE_SCORE;
+                            ShowPlusEffect(GameConfig.CHUTE_SCORE);
                             MovePieceToTargetBlock(piece, block.connectedBlockNumber);
                         });
                         questionWindow.Show();
                         break;
                     case SpecialBlockType.Ladder:
                         Score = Score + GameConfig.LADDER_SCORE;
+                        ShowPlusEffect(GameConfig.LADDER_SCORE);
                         MovePieceToTargetBlock(piece, block.connectedBlockNumber);
                         FinishMove(piece, block.connectedBlockNumber);
+                        break;
+                    case SpecialBlockType.Special:
+                        Random randomSP = new Random();
+                        int randomQuestionIndexSP = randomSP.Next(0, GameConfig.questions.Count);
+                        QuestionWindow questionWindowSP = new QuestionWindow(GameConfig.questions[randomQuestionIndexSP],
+                        () =>
+                        {
+                            Score = Score + GameConfig.SPECIAL_BLOCK;
+                            ShowPlusEffect(GameConfig.SPECIAL_BLOCK);
+                        }, null);
+                        questionWindowSP.Show();
                         break;
                     default:
                         break;
@@ -279,6 +313,32 @@ namespace Chute_and_Ladders_with_Arithmetic
             {
                 Close();
             }
+        }
+
+        private void ShowPlusEffect(int plusScore)
+        {
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = 0;
+            animation.From = 1;
+            animation.Duration = TimeSpan.FromMilliseconds(1000);
+            animation.EasingFunction = new QuadraticEase();
+
+            Storyboard sb = new Storyboard();
+            sb.Children.Add(animation);
+
+            PlusEffect.Text = plusScore > 0 ? $"+{plusScore}" : $"{plusScore}";
+            PlusEffect.Visibility = Visibility.Visible;
+            PlusEffect.Opacity = 1.0f;
+
+            Storyboard.SetTarget(sb, PlusEffect);
+            Storyboard.SetTargetProperty(sb, new PropertyPath(Control.OpacityProperty));
+
+            sb.Completed += (s, e) =>
+            {
+                PlusEffect.Visibility = Visibility.Hidden;
+                PlusEffect.Opacity = 1.0f;
+            };
+            sb.Begin();
         }
     }
 }

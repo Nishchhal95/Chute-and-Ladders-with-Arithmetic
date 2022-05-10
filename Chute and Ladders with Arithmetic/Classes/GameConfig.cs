@@ -18,10 +18,10 @@ namespace Chute_and_Ladders_with_Arithmetic
         public const int MAX_X = 10;
         public const int MAX_Y = 10;
 
-        public const int MOVE_SCORE = 2;
-        public const int LADDER_SCORE = 5;
-        public const int CHUTE_SCORE = -5;
-        public const int SPECIAL_BLOCK = 10;
+        public const int MOVE_SCORE = 5;
+        public const int LADDER_SCORE = 10;
+        public const int CHUTE_SCORE = -10;
+        public const int SPECIAL_BLOCK = 20;
 
         public static Dictionary<int, SpecialBlockGameConfig> gameBoardSpecialBlocksConfig =
             new Dictionary<int, SpecialBlockGameConfig>()
@@ -46,6 +46,13 @@ namespace Chute_and_Ladders_with_Arithmetic
                 { 93, new SpecialBlockGameConfig(73, SpecialBlockType.Chute) },
                 { 95, new SpecialBlockGameConfig(75, SpecialBlockType.Chute) },
                 { 98, new SpecialBlockGameConfig(78, SpecialBlockType.Chute) },
+
+                { 3, new SpecialBlockGameConfig(3, SpecialBlockType.Special) },
+                { 13, new SpecialBlockGameConfig(13, SpecialBlockType.Special) },
+                { 37, new SpecialBlockGameConfig(37, SpecialBlockType.Special) },
+                { 69, new SpecialBlockGameConfig(69, SpecialBlockType.Special) },
+                { 79, new SpecialBlockGameConfig(79, SpecialBlockType.Special) },
+                { 97, new SpecialBlockGameConfig(97, SpecialBlockType.Special) },
             };
 
         public static List<Question> questions = new List<Question>()

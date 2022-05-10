@@ -38,6 +38,7 @@ namespace Chute_and_Ladders_with_Arithmetic
     public enum SpecialBlockType
     {
         Chute,
-        Ladder
+        Ladder,
+        Special
     }
 }

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Resources\ChuteAndLadderBoard.jpg" />
+    <None Remove="Resources\chuteIcon.png" />
     <None Remove="Resources\ChutesAndLadderMenuImage.jpg" />
     <None Remove="Resources\Dice_1.png" />
     <None Remove="Resources\Dice_2.png" />
@@ -17,12 +18,15 @@
     <None Remove="Resources\Dice_4.png" />
     <None Remove="Resources\Dice_5.png" />
     <None Remove="Resources\Dice_6.png" />
+    <None Remove="Resources\ladderIcon.jpg" />
     <None Remove="Resources\PieceGreen_NoBG.png" />
     <None Remove="Resources\PiecePink_NoBG.png" />
+    <None Remove="Resources\starIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\ChuteAndLadderBoard.jpg" />
+    <Resource Include="Resources\chuteIcon.png" />
     <Resource Include="Resources\ChutesAndLadderMenuImage.jpg" />
     <Resource Include="Resources\Dice_1.png" />
     <Resource Include="Resources\Dice_2.png" />
@@ -30,8 +34,10 @@
     <Resource Include="Resources\Dice_4.png" />
     <Resource Include="Resources\Dice_5.png" />
     <Resource Include="Resources\Dice_6.png" />
+    <Resource Include="Resources\ladderIcon.jpg" />
     <Resource Include="Resources\PieceGreen_NoBG.png" />
     <Resource Include="Resources\PiecePink_NoBG.png" />
+    <Resource Include="Resources\starIcon.png" />
   </ItemGroup>
 
 </Project>
