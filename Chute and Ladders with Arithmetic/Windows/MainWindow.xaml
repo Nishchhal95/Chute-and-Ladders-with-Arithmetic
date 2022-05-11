@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="Chute And Ladders" Height="720" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Chute And Ladders" Height="720" Width="600" WindowStartupLocation="CenterScreen">
+
+    <Viewbox>
     <Canvas x:Name="LayoutRoot" Height="720" Width="600" Background="DarkTurquoise">
         <Label Content="Chute and Ladders" HorizontalAlignment="Center" VerticalAlignment="Top" 
                FontSize="30" Canvas.Left="171" Canvas.Top="-5"/>
@@ -31,7 +33,7 @@
 
         <Image x:Name="Dice" Source="../Resources/Dice_1.png" Stretch="Fill" StretchDirection="Both"
                HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" 
-               Canvas.Left="132" Canvas.Top="601">
+               Canvas.Left="132" Canvas.Top="601" ToolTip="Click to roll" Cursor="Hand">
         </Image>
 
         <Button x:Name="DiceRoll" Content="Roll" Canvas.Top="656" Width="50" 
@@ -82,4 +84,5 @@
 
 
     </Canvas>
+    </Viewbox>
 </Window>

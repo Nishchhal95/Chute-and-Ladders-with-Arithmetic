@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Life Saver Pop up" Height="200" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
-        <Label x:Name="QuestionLabel" Content="Dummy Question" Background="Beige" Margin="10 10 10 0"></Label>
+        <Label x:Name="QuestionLabel" Content="Dummy Question" Background="Beige" Margin="10 5 10 5" FontSize="20"></Label>
         <Grid Margin="10 5 10 0 ">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -21,10 +21,14 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="Op_0" Content="Option 1" Grid.Row="0" Grid.Column="0" Click="OptionClick"/>
-            <Button x:Name="Op_1" Content="Option 2" Grid.Row="0" Grid.Column="2" Click="OptionClick"/>
-            <Button x:Name="Op_2" Content="Option 3" Grid.Row="2" Grid.Column="0" Click="OptionClick"/>
-            <Button x:Name="Op_3" Content="Option 4" Grid.Row="2" Grid.Column="2" Click="OptionClick"/>
+            <Button x:Name="Op_0" Content="Option 1" Grid.Row="0" Grid.Column="0" Click="OptionClick" 
+                    FontSize="20" FontWeight="Bold" Margin="20 0 20 10"/>
+            <Button x:Name="Op_1" Content="Option 2" Grid.Row="0" Grid.Column="2" Click="OptionClick" 
+                    FontSize="20" FontWeight="Bold" Margin="20 0 20 10"/>
+            <Button x:Name="Op_2" Content="Option 3" Grid.Row="2" Grid.Column="0" Click="OptionClick" 
+                    FontSize="20" FontWeight="Bold" Margin="20 0 20 10"/>
+            <Button x:Name="Op_3" Content="Option 4" Grid.Row="2" Grid.Column="2" Click="OptionClick" 
+                    FontSize="20" FontWeight="Bold" Margin="20 0 20 10"/>
         </Grid>
     </StackPanel>
 </Window>
