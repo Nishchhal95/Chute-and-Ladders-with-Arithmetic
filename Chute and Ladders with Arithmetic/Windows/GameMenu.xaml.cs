@@ -20,6 +20,20 @@ namespace Chute_and_Ladders_with_Arithmetic
     /// </summary>
     public partial class GameMenu : Window
     {
+        private Dictionary<string, string> languageMap = new Dictionary<string, string>()
+        {
+            {"English", "en" },
+            {"Deutsch", "de" },
+        };
+
+        private Dictionary<string, string> languageMapReverse = new Dictionary<string, string>()
+        {
+            {"en", "English" },
+            {"de", "Deutsch" },
+        };
+
+        private bool initLanguageComboxBox = false;
+
         public GameMenu()
         {
             InitializeComponent();
@@ -37,6 +51,10 @@ namespace Chute_and_Ladders_with_Arithmetic
             {
                 HighScoreText.Visibility = Visibility.Hidden;
             }
+
+            LanguageComboBox.ItemsSource = languageMap.Keys.ToList();
+            LanguageComboBox.SelectedItem = languageMapReverse[DataStorage.GetSavedLanguage()];
+            initLanguageComboxBox = true;
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +62,23 @@ namespace Chute_and_Ladders_with_Arithmetic
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+        }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!initLanguageComboxBox || !languageMap.ContainsKey(LanguageComboBox.SelectedItem.ToString()))
+            {
+                return;
+            }
+
+            DataStorage.SaveLanguage(languageMap[LanguageComboBox.SelectedItem.ToString()]);
+            if(MessageBox.Show("Please restart the Application to change Language to " + languageMapReverse[DataStorage.GetSavedLanguage()], "Language Change", 
+                MessageBoxButton.OK) == MessageBoxResult.OK)
+            {
+                
+                Application.Current.Shutdown();
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chute_and_Ladders_with_Arithmetic.Classes;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,9 @@ namespace Chute_and_Ladders_with_Arithmetic
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(DataStorage.GetSavedLanguage());
+        }
     }
 }

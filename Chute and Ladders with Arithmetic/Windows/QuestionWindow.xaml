@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic.Windows"
+        xmlns:l="clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="Life Saver Pop up" Height="200" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="{x:Static l:Resources.QuestionWindowTitle}" Height="200" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
         <Label x:Name="QuestionLabel" Content="Dummy Question" Background="Beige" Margin="10 5 10 5" FontSize="20"></Label>
         <Grid Margin="10 5 10 0 ">
