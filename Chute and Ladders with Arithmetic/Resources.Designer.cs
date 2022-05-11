@@ -97,11 +97,29 @@ namespace Chute_and_Ladders_with_Arithmetic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to +5 For Every Move.
         /// </summary>
         public static string MovePoints {
             get {
                 return ResourceManager.GetString("MovePoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You made a new HighScore!!.
+        /// </summary>
+        public static string NewHs {
+            get {
+                return ResourceManager.GetString("NewHs", resourceCulture);
             }
         }
         

@@ -129,8 +129,14 @@
   <data name="HighScore" xml:space="preserve">
     <value>HighScore</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
   <data name="MovePoints" xml:space="preserve">
     <value>+5 für jede Bewegung</value>
+  </data>
+  <data name="NewHs" xml:space="preserve">
+    <value>Du hast einen neuen Highscore gemacht!!</value>
   </data>
   <data name="Play" xml:space="preserve">
     <value>Spiel</value>

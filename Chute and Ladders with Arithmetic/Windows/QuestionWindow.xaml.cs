@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,14 +55,14 @@ namespace Chute_and_Ladders_with_Arithmetic.Windows
                 if(buttonIDInteger == question.answerIndex)
                 {
                     Debug.WriteLine("Correct Answer!");
-                    ShowMessage("Correct Answer!", true);
+                    ShowMessage(DataStorage.GetGlobalizedString("Correct_Answer"), true);
                     correctAnswerAction?.Invoke();
                 }
 
                 else
                 {
                     Debug.WriteLine("Wrong Answer!");
-                    ShowMessage("Wrong Answer!", false);
+                    ShowMessage(DataStorage.GetGlobalizedString("Wrong_Answer"), false);
                     wrongAnswerAction?.Invoke();
                 }
             }
@@ -70,7 +71,7 @@ namespace Chute_and_Ladders_with_Arithmetic.Windows
         private void ShowMessage(string message, bool correct)
         {
             string messageBoxText = message;
-            string caption = "Result";
+            string caption = DataStorage.GetGlobalizedString("ResultWindowTitle");
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Information;
             MessageBoxResult result;

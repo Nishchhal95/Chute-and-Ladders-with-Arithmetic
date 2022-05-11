@@ -208,10 +208,11 @@ namespace Chute_and_Ladders_with_Arithmetic
 
             if(block.blockIndex == 100)
             {
-                string winMessageString = $"You Won! \nAnd your total Score is {Score}.";
+                string winMessageString = $"{DataStorage.GetGlobalizedString("Win_Message")} " +
+                    $"\n{DataStorage.GetGlobalizedString("Win_Message_Score")} {Score}.";
                 if(Score > DataStorage.GetSavedHighScore())
                 {
-                    winMessageString += $"\nYou made a new HighScore!!";
+                    winMessageString += $"\n{DataStorage.GetGlobalizedString("NewHs")}";
                     DataStorage.SaveHighScore(Score);
                 }
                 ShowMessage(winMessageString);
@@ -296,13 +297,13 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private void UpdateScoreOnUI()
         {
-            ScoreTextBlock.Text = $"Score: " + _score;
+            ScoreTextBlock.Text = $"{DataStorage.GetGlobalizedString("Score")}: " + _score;
         }
 
         private void ShowMessage(string message)
         {
             string messageBoxText = message;
-            string caption = "Winner!";
+            string caption = DataStorage.GetGlobalizedString("ResultWindowTitle");
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Information;
             MessageBoxResult result;

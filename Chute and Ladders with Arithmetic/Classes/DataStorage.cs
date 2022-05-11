@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,30 @@ namespace Chute_and_Ladders_with_Arithmetic.Classes
             }
             string appData = System.AppDomain.CurrentDomain.BaseDirectory;
             filePath = Path.Combine(appData, fileName);
+        }
+
+        public static string GetSavedLanguage()
+        {
+            string languageFilePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Lang");
+            if (!File.Exists(languageFilePath))
+            {
+                return "en";
+            }
+            string lang = File.ReadAllText(languageFilePath);
+            return lang;
+        }
+
+        public static void SaveLanguage(string lang)
+        {
+            string languageFilePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Lang");
+            File.WriteAllText(languageFilePath, lang);
+        }
+
+        public static string GetGlobalizedString(string res)
+        {
+            var resourceManager = new System.Resources.ResourceManager(typeof(Resources));
+            var bodyResource = resourceManager.GetString(res);
+            return bodyResource;
         }
     }
 }
