@@ -22,7 +22,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Chute_and_Ladders_with_Arithmetic.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Correct Answer!.
         /// </summary>
-        internal static string Correct_Answer {
+        public static string Correct_Answer {
             get {
                 return ResourceManager.GetString("Correct_Answer", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Chute And Ladders.
         /// </summary>
-        internal static string GameTitle {
+        public static string GameTitle {
             get {
                 return ResourceManager.GetString("GameTitle", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Learn Arithmetic with me.
         /// </summary>
-        internal static string GameTitleExtended {
+        public static string GameTitleExtended {
             get {
                 return ResourceManager.GetString("GameTitleExtended", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to HighScore.
         /// </summary>
-        internal static string HighScore {
+        public static string HighScore {
             get {
                 return ResourceManager.GetString("HighScore", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to +5 For Every Move.
         /// </summary>
-        internal static string MovePoints {
+        public static string MovePoints {
             get {
                 return ResourceManager.GetString("MovePoints", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Play.
         /// </summary>
-        internal static string Play {
+        public static string Play {
             get {
                 return ResourceManager.GetString("Play", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Life Saver Question.
         /// </summary>
-        internal static string QuestionWindowTitle {
+        public static string QuestionWindowTitle {
             get {
                 return ResourceManager.GetString("QuestionWindowTitle", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Result.
         /// </summary>
-        internal static string ResultWindowTitle {
+        public static string ResultWindowTitle {
             get {
                 return ResourceManager.GetString("ResultWindowTitle", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Roll.
         /// </summary>
-        internal static string Roll {
+        public static string Roll {
             get {
                 return ResourceManager.GetString("Roll", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Score.
         /// </summary>
-        internal static string Score {
+        public static string Score {
             get {
                 return ResourceManager.GetString("Score", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to You Won!.
         /// </summary>
-        internal static string Win_Message {
+        public static string Win_Message {
             get {
                 return ResourceManager.GetString("Win_Message", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to And your total Score is.
         /// </summary>
-        internal static string Win_Message_Score {
+        public static string Win_Message_Score {
             get {
                 return ResourceManager.GetString("Win_Message_Score", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Winner!.
         /// </summary>
-        internal static string WinMessageTite {
+        public static string WinMessageTite {
             get {
                 return ResourceManager.GetString("WinMessageTite", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Chute_and_Ladders_with_Arithmetic {
         /// <summary>
         ///   Looks up a localized string similar to Wrong Answer!.
         /// </summary>
-        internal static string Wrong_Answer {
+        public static string Wrong_Answer {
             get {
                 return ResourceManager.GetString("Wrong_Answer", resourceCulture);
             }

@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chute_and_Ladders_with_Arithmetic"
+        xmlns:l = "clr-namespace:Chute_and_Ladders_with_Arithmetic"
         mc:Ignorable="d"
-        Title="Chute And Ladders" Height="700" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="{x:Static l:Resources.GameTitle}" Height="700" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel Background="DarkTurquoise">
         <Image Source="../Resources/ChutesAndLadderMenuImage.jpg" Margin="10 20 10 0"></Image>
-        <Label Content="Learn arithemetic with me" HorizontalAlignment="Center" FontSize="30"/>
-        <Button Content="Play" HorizontalAlignment="Center" FontSize="40" Height="60" Width="150" Margin="0 100 0 0" Click="PlayButton_Click"/>
-        <TextBlock x:Name="HighScoreText" Text="HighScore : 0" HorizontalAlignment="Center" Margin="0 60 0 0" FontSize="30" Visibility="Hidden"></TextBlock>
+        <Label Content="{x:Static l:Resources.GameTitleExtended}" HorizontalAlignment="Center" FontSize="30"/>
+        <Button Content="{x:Static l:Resources.Play}" HorizontalAlignment="Center" FontSize="40" Height="60" Width="150" Margin="0 100 0 0" Click="PlayButton_Click"/>
+        <TextBlock x:Name="HighScoreText" Text="{x:Static l:Resources.HighScore}" HorizontalAlignment="Center" Margin="0 60 0 0" FontSize="30" Visibility="Hidden"></TextBlock>
 
     </StackPanel>
 </Window>
