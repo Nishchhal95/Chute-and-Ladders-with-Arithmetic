@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="GameTitle">Chute And Ladders</system:String>
+    <system:String x:Key="GameTitleExtended">Learn Arithmetic with me</system:String>
+    <system:String x:Key="Play">Play</system:String>
+    <system:String x:Key="HighScore">HighScore</system:String>
+    
+    <system:String x:Key="Score">Score</system:String>
+    <system:String x:Key="Roll">Roll</system:String>
+    <system:String x:Key="MovePoints">+5 For Every Move</system:String>
+    <system:String x:Key="Win_Message">You Won!</system:String>
+    <system:String x:Key="Win_Message_Score">And your total Score is</system:String>
+    <system:String x:Key="WinMessageTite">Winner!</system:String>
+    
+    <system:String x:Key="QuestionWindowTitle">Life Saver Question</system:String>
+    <system:String x:Key="Correct_Answer">Correct Answer!</system:String>
+    <system:String x:Key="Wrong_Answer">Wrong Answer!</system:String>
+    <system:String x:Key="ResultWindowTitle">Result</system:String>
+      
+</ResourceDictionary>
