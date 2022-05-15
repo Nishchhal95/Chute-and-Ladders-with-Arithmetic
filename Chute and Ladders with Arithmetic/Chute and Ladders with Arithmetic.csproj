@@ -21,6 +21,7 @@
     <None Remove="Resources\ladderIcon.jpg" />
     <None Remove="Resources\PieceGreen_NoBG.png" />
     <None Remove="Resources\PiecePink_NoBG.png" />
+    <None Remove="Resources\PlayImage.png" />
     <None Remove="Resources\starIcon.png" />
   </ItemGroup>
 
@@ -37,6 +38,7 @@
     <Resource Include="Resources\ladderIcon.jpg" />
     <Resource Include="Resources\PieceGreen_NoBG.png" />
     <Resource Include="Resources\PiecePink_NoBG.png" />
+    <Resource Include="Resources\PlayImage.png" />
     <Resource Include="Resources\starIcon.png" />
   </ItemGroup>
 

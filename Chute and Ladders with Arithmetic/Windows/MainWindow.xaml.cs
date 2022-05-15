@@ -23,6 +23,8 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private Piece greenPiece, pinkPiece = null;
 
+        private int lastDiceRoll = 0;
+
         public int Score
         {
             get
@@ -47,6 +49,7 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private void InitGame()
         {
+            Score = 0;
             SetupGame();
             SetupPieces();
         }
@@ -202,8 +205,8 @@ namespace Chute_and_Ladders_with_Arithmetic
 
         private void FinishMove(Piece piece, int blockNumber)
         {
-            Score = Score + GameConfig.MOVE_SCORE;
-            ShowPlusEffect(GameConfig.MOVE_SCORE);
+            Score = Score + lastDiceRoll;
+            ShowPlusEffect(lastDiceRoll);
             Block block = blocks.Find(x => x.blockIndex == blockNumber);
 
             if(block.blockIndex == 100)
@@ -272,6 +275,7 @@ namespace Chute_and_Ladders_with_Arithmetic
             await Task.Delay(50);
             int randomDiceNumber = GetRandomDiceNumber();
             UpdateDiceImage(randomDiceNumber);
+            lastDiceRoll = randomDiceNumber;
             Debug.WriteLine("Dice Final Roll : " + randomDiceNumber);
             MovePieceToTargetBlockBlockByBlock(greenPiece, greenPiece.boardBlockNumber + randomDiceNumber);
         }
@@ -314,6 +318,11 @@ namespace Chute_and_Ladders_with_Arithmetic
             {
                 Close();
             }
+        }
+
+        private void Dice_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DiceRoll_Click(null, null);
         }
 
         private void ShowPlusEffect(int plusScore)

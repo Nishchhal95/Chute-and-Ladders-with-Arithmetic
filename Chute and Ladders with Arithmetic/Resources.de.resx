@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerDisplayMessage" xml:space="preserve">
+    <value>Die richtige Antwort ist</value>
+  </data>
   <data name="Correct_Answer" xml:space="preserve">
     <value>Richtige Antwort!</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="NewHs" xml:space="preserve">
     <value>Du hast einen neuen Highscore gemacht!!</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
   </data>
   <data name="Play" xml:space="preserve">
     <value>Spiel</value>
@@ -164,5 +170,8 @@
   </data>
   <data name="Wrong_Answer" xml:space="preserve">
     <value>Falsche Antwort!</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>

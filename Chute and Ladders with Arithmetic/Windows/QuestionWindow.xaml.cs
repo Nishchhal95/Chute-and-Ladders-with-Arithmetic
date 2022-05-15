@@ -55,22 +55,27 @@ namespace Chute_and_Ladders_with_Arithmetic.Windows
                 if(buttonIDInteger == question.answerIndex)
                 {
                     Debug.WriteLine("Correct Answer!");
-                    ShowMessage(DataStorage.GetGlobalizedString("Correct_Answer"), true);
+                    ShowMessage(DataStorage.GetGlobalizedString("Correct_Answer"), 
+                        question.options[question.answerIndex], true);
                     correctAnswerAction?.Invoke();
                 }
 
                 else
                 {
                     Debug.WriteLine("Wrong Answer!");
-                    ShowMessage(DataStorage.GetGlobalizedString("Wrong_Answer"), false);
+                    ShowMessage(DataStorage.GetGlobalizedString("Wrong_Answer"),
+                        question.options[question.answerIndex], false);
                     wrongAnswerAction?.Invoke();
                 }
             }
         }
 
-        private void ShowMessage(string message, bool correct)
+        private void ShowMessage(string message, string correctAnswer, bool correct)
         {
-            string messageBoxText = message;
+            string additionalMessage = correct ? DataStorage.GetGlobalizedString("Yes") : 
+                DataStorage.GetGlobalizedString("No");
+            string messageBoxText = $"{message} \n{additionalMessage}, " +
+                $"{DataStorage.GetGlobalizedString("AnswerDisplayMessage")} {correctAnswer}";
             string caption = DataStorage.GetGlobalizedString("ResultWindowTitle");
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Information;

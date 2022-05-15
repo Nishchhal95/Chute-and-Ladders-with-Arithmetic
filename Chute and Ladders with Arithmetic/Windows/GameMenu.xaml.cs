@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -79,6 +80,31 @@ namespace Chute_and_Ladders_with_Arithmetic
                 Application.Current.Shutdown();
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             }
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            PlayButton_Click(null, null);
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ScaleTransform trans = new ScaleTransform();
+            (sender as Image).RenderTransform = trans;
+            // if you use the same animation for X & Y you don't need anim1, anim2 
+            DoubleAnimation anim = new DoubleAnimation(1, 1.1, TimeSpan.FromMilliseconds(100));
+            trans.BeginAnimation(ScaleTransform.ScaleXProperty, anim);
+            trans.BeginAnimation(ScaleTransform.ScaleYProperty, anim);
+        }
+
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ScaleTransform trans = new ScaleTransform();
+            (sender as Image).RenderTransform = trans;
+            // if you use the same animation for X & Y you don't need anim1, anim2 
+            DoubleAnimation anim = new DoubleAnimation(1.1, 1, TimeSpan.FromMilliseconds(100));
+            trans.BeginAnimation(ScaleTransform.ScaleXProperty, anim);
+            trans.BeginAnimation(ScaleTransform.ScaleYProperty, anim);
         }
     }
 }

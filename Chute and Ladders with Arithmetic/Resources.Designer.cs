@@ -61,6 +61,15 @@ namespace Chute_and_Ladders_with_Arithmetic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Correct Answer is.
+        /// </summary>
+        public static string AnswerDisplayMessage {
+            get {
+                return ResourceManager.GetString("AnswerDisplayMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correct Answer!.
         /// </summary>
         public static string Correct_Answer {
@@ -120,6 +129,15 @@ namespace Chute_and_Ladders_with_Arithmetic {
         public static string NewHs {
             get {
                 return ResourceManager.GetString("NewHs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace Chute_and_Ladders_with_Arithmetic {
         public static string Wrong_Answer {
             get {
                 return ResourceManager.GetString("Wrong_Answer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }
